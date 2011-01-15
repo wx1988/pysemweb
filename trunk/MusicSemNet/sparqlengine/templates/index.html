@@ -1,0 +1,13 @@
+﻿<html>
+	<head>
+		<title>引擎搜索界面</title>
+	</head>
+	<body>
+		<form action="/sparql/result" method="POST">
+			 {% csrf_token %}
+			<textarea id="sparkqltext" name="sparkqltext" rows="5" cols="100"></textarea>
+			<br/>
+			<input id="getresultbtn" name="getresultbtn" type="submit" value="查询"/>
+		</form>
+	</body>
+</html>

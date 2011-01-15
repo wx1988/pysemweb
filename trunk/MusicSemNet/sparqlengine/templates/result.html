@@ -1,0 +1,44 @@
+﻿<html>
+	<head>
+		<title>引擎搜索界面</title>
+	</head>
+	<body>
+		<form action="./result" method="POST">
+			 {% csrf_token %}
+			<textarea id="sparkqltext" name="sparkqltext" rows="5" cols="100"></textarea>
+			<br/>
+			<input id="getresultbtn" name="getresultbtn" type="submit" value="查询"/>
+		</form>
+		<div>
+			<!--the area to show the query result
+			the col name
+			the row value
+			返回的是dic？
+			-->
+			<div>
+				查询语句为：<br/>
+				<textarea rows="10" cols="50">
+					{{thequery}}
+				</textarea>
+			</div>
+			<div>
+				中间sql为:<br/>
+				<textarea rows="10" cols="50">
+					{{sql}}
+				</textarea>
+			</div>
+			<div>
+				查询结果为：<br/>
+				<table border="1">
+				{% for r in rows %}
+					<tr>
+					{% for i in r %}				
+						<td>{{i}}</td>
+					{% endfor %}
+					</tr>
+				{% endfor %}
+				</table>
+			</div>
+		</div>
+	</body>
+</html>
