@@ -5,7 +5,7 @@ class NodeType(models.Model):
     isvalue = models.BooleanField()
     desp = models.TextField()
     comment = models.TextField()
-    uri = models.URLField()
+    uri = models.URLField(verify_exists=False)
 
     def __unicode__(self):
         return self.uri
@@ -13,7 +13,7 @@ class NodeType(models.Model):
 class EdgeType(models.Model):
     desp = models.TextField()
     comment = models.TextField()
-    uri = models.URLField()
+    uri = models.URLField(verify_exists=False)
     node1type = models.ForeignKey(NodeType,related_name='nt1')
     node2type = models.ForeignKey(NodeType,related_name='nt2')
 

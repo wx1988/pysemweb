@@ -1,0 +1,23 @@
+﻿{% extends 'webuibase.html' %}
+
+{% block titleblock %}
+{{ schemaname }}
+{% endblock %}
+
+{% block metablock %}
+{% endblock %}
+
+{% block cssblock %}
+{% endblock %}
+
+{% block jsblock %}
+{% endblock %}
+
+{% block maincontentblock %}
+数据区
+<ul>
+{% for n in nodes %}
+	<li>{{ n.value }}</li>
+{% endfor %}
+</ul>
+{% endblock %}

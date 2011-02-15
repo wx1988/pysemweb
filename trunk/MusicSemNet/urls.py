@@ -14,5 +14,6 @@ urlpatterns = patterns('',
     # Uncomment the next line to enable the admin:
     (r'^admin/', include(admin.site.urls)),
     (r'^sparql/', include('sparqlengine.urls')),
+    (r'^webui/', include('webui.urls')),                       
     #(r'^test/', include('sparqlengine.views.index')),
 )
