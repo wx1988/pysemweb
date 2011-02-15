@@ -1,0 +1,116 @@
+﻿<html>
+<head>
+
+<title>
+{% block titleblock %}
+{% endblock %}
+</title>
+
+{% block metablock %}
+{% endblock %}
+
+<style type="text/css">
+#jsddm
+{	margin: 0;
+	padding: 0}
+	
+	#jsddm li
+	{	float: left;
+		list-style: none;
+		font: 12px Tahoma, Arial}
+
+	#jsddm li a
+	{	display: block;
+		background: #20548E;
+		padding: 5px 12px;
+		text-decoration: none;
+		border-right: 1px solid white;
+		width: 70px;
+		color: #EAFFED;
+		white-space: nowrap}
+
+	#jsddm li a:hover
+	{	background: #1A4473}
+		
+		#jsddm li ul
+		{	margin: 0;
+			padding: 0;
+			position: absolute;
+			visibility: hidden;
+			border-top: 1px solid white}
+		
+		#jsddm li ul li
+		{	float: none;
+			display: inline}
+		
+		#jsddm li ul li a
+		{	width: auto;
+			background: #9F1B1B}
+		
+		#jsddm li ul li a:hover
+		{	background: #7F1616}
+</style>
+{% block cssblock %}
+{% endblock %}
+
+<script src="http://ajax.googleapis.com.sixxs.org/ajax/libs/jquery/1.2.6/jquery.js" type="text/javascript"></script>
+<script type="text/javascript">
+var timeout    = 500;
+var closetimer = 0;
+var ddmenuitem = 0;
+
+function jsddm_open()
+{  jsddm_canceltimer();
+   jsddm_close();
+   ddmenuitem = $(this).find('ul').css('visibility', 'visible');}
+
+function jsddm_close()
+{  if(ddmenuitem) ddmenuitem.css('visibility', 'hidden');}
+
+function jsddm_timer()
+{  closetimer = window.setTimeout(jsddm_close, timeout);}
+
+function jsddm_canceltimer()
+{  if(closetimer)
+   {  window.clearTimeout(closetimer);
+      closetimer = null;}}
+
+$(document).ready(function()
+{  $('#jsddm > li').bind('mouseover', jsddm_open)
+   $('#jsddm > li').bind('mouseout',  jsddm_timer)});
+
+document.onclick = jsddm_close;
+</script>
+{% block jsblock %}
+{% endblock %}
+</head>
+
+<body>
+<div>
+<ul id="jsddm">
+    <li><a href="/webui">数据</a></li>
+    <!--<li><a href="/webui/view">数据</a></li>-->
+    <li><a href="/webui/schema"> 类型 </a> </li>
+    
+    <li><a href="/webui/view">test</a>
+        <ul>
+            <li><a href="#">Slide Effect</a></li>
+            <li><a href="#">Fade Effect</a></li>
+            <li><a href="#">Opacity Mode</a></li>
+            <li><a href="#">Drop Shadow</a></li>
+            <li><a href="#">Semitransparent</a></li>
+        </ul>
+    </li>   
+    <li><a href="#">帮助</a></li>
+</ul>
+</div>
+<br/>
+<br/>
+<br/>
+<div id="main">
+{% block maincontentblock %}
+{% endblock %}
+</div>
+</body>
+
+</html>

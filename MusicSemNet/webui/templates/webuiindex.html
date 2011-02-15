@@ -1,0 +1,31 @@
+﻿{% extends 'webuibase.html' %}
+
+{% block titleblock %}
+主页
+{% endblock %}
+
+{% block metablock %}
+{% endblock %}
+
+{% block cssblock %}
+{% endblock %}
+
+{% block jsblock %}
+{% endblock %}
+
+{% block maincontentblock %}
+<ul>
+数据区
+{% for sm in schemas %}
+	<li>{{ sm }}</li>
+{% endfor %}
+</ul>
+
+链接区
+<ul>
+{% for nt in nts %}
+	<li><a href="/webui/view/?key={{ nt.uri }}">{{ nt.desp }}</a></li>
+{% endfor %}
+
+</ul>
+{% endblock %}
